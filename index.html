@@ -53,7 +53,7 @@
         "logo": "https://vtmarket-club.com/assets/vt_market_logo.png",
         "sameAs": [
             "https://www.youtube.com/@VThychannel",
-            "https://zalo.me/0868916194",
+            "https://zalo.me/0987166861",
             "https://t.me/868916194"
         ],
         "potentialAction": {
@@ -75,7 +75,7 @@
       <div class="nav-content">
         <!-- <div class="nav-actions">
           <span class="branch-name">Xe Ghép Vĩnh Phúc</span>
-          <a class="quote-button" href="tel:0989101109">BÁO GIÁ</a>
+          <a class="quote-button" href="tel:0987166861">BÁO GIÁ</a>
           <form class="search" role="search">
             <input type="search" placeholder="tìm kiếm" aria-label="Tìm kiếm">
             <button type="submit" aria-label="Tìm kiếm">
@@ -112,8 +112,8 @@
         <p class="route-title">Phú Thọ ⇄ Vĩnh Phúc ⇄ Hà Nội ⇄ Tam Đảo</p>
         <p class="intro">Xe êm, giá tốt cho mọi nhà. Chỉ từ 150.000đ</p>
         <div class="hero-actions">
-          <a class="button primary" href="tel:0989101109"><span class="button-icon">●</span> GỌI XE NGAY</a>
-          <a class="button secondary" href="#lien-he"><span class="button-icon">✉</span> CHAT ZALO</a>
+          <a class="button primary" href="tel:0987166861"><span class="button-icon">●</span> GỌI XE NGAY</a>
+          <a class="button secondary" href="https://zalo.me/0987166861"><span class="button-icon">✉</span> CHAT ZALO</a>
         </div>
       </div>
       <span class="slide-dot" aria-hidden="true"></span>
@@ -121,10 +121,10 @@
 
     <section class="services" aria-label="Dịch vụ">
       <div class="container service-grid">
-        <a class="service" href="tel:0989101109"><span class="service-icon">▱</span><span class="service-label">GỌI NGAY<br>XE GHÉP</span></a>
-        <a class="service" href="#xe-ghep"><span class="service-icon">✈</span><span class="service-label">XE ĐI<br>SÂN BAY</span></a>
-        <a class="service" href="#gui-hang"><span class="service-icon">▰</span><span class="service-label">GỬI HÀNG<br>HOẢ TỐC</span></a>
-        <a class="service" href="#dat-xe"><span class="service-icon">⌁</span><span class="service-label">ĐẶT XE<br>ĐƯỜNG DÀI</span></a>
+        <a class="service" href="tel:0987166861"><span class="service-icon">▱</span><span class="service-label">GỌI NGAY<br>XE GHÉP</span></a>
+        <a class="service" href="https://zalo.me/0987166861"><span class="service-icon">✈</span><span class="service-label">XE ĐI<br>SÂN BAY</span></a>
+        <a class="service" href="https://zalo.me/0987166861"><span class="service-icon">▰</span><span class="service-label">GỬI HÀNG<br>HOẢ TỐC</span></a>
+        <a class="service" href="https://zalo.me/0987166861"><span class="service-icon">⌁</span><span class="service-label">ĐẶT XE<br>ĐƯỜNG DÀI</span></a>
       </div>
     </section>
 
@@ -174,7 +174,7 @@
         <div class="footer-contact">
           <a class="footer-brand" href="#trang-chu">XE GHÉP 88</a>
           <p>Phú Thọ · Vĩnh Phúc · Hà Nội · Tam Đảo</p>
-          <a href="tel:0989101109">Tổng đài: 0989 101 109</a>
+          <a href="tel:0987166861">Tổng đài: 0987 166 861</a>
         </div>
         <div>
           <h2>Chính sách</h2>
@@ -195,10 +195,10 @@
         </div>
         <div>
           <h2>Kết nối</h2>
-          <a class="social-link" href="#youtube" aria-label="YouTube">
+          <a class="social-link" href="#facebook" aria-label="Facebook">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"></rect>
-              <path d="m10 9 5 3-5 3V9Z" fill="#060606"></path>
+              <circle cx="12" cy="12" r="11" fill="currentColor"></circle>
+              <path fill="#fff" d="M13.5 20v-7h2.4l.4-2.7h-2.8V8.6c0-.8.2-1.4 1.4-1.4H16V4.8c-.3 0-1.1-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.6v2h-2.3V13h2.3v7h3.1Z"></path>
             </svg>
           </a>
         </div>
@@ -220,6 +220,34 @@
       menuToggle.setAttribute("aria-expanded", String(isMenuOpen));
       menuToggle.setAttribute("aria-label", isMenuOpen ? "Đóng menu" : "Mở menu");
     });
+
+    const revealGroups = [
+      document.querySelectorAll(".hero-content"),
+      document.querySelectorAll(".about-intro, .benefit")
+    ];
+
+    if ("IntersectionObserver" in window) {
+      document.documentElement.classList.add("scroll-reveal-ready");
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.15 });
+
+      revealGroups.forEach((group) => {
+        group.forEach((item, index) => {
+          item.dataset.scrollReveal = "";
+          item.style.setProperty("--reveal-delay", `${index * 100}ms`);
+          revealObserver.observe(item);
+        });
+      });
+    }
   </script>
 </body>
 </html>
